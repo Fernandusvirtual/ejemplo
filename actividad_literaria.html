@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificación Literaria - Módulo 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        header h1 {
+            color: #333;
+        }
+        .subtitle {
+            color: #666;
+            font-style: italic;
+        }
+        .story-box {
+            background-color: #eef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .question-card {
+            background-color: #fff8dc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .option {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .check-btn, .reset-btn {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .check-btn:hover, .reset-btn:hover {
+            background-color: #005fa3;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .results {
+            background-color: #dff0d8;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Análisis Literario</h1>
+            <p class="subtitle">Módulo 4 - Prepa en Línea SEP</p>
+        </header>
+
+        <main>
+            <div class="text-section">
+                <h2>Texto Literario</h2>
+                <div class="story-box">
+                    <p id="story-text">
+                        La lluvia caía sin cesar sobre el pueblo abandonado. María, una joven de diecisiete años, caminaba por las calles destruidas buscando respuestas. Su familia había desaparecido tras la gran catástrofe, dejando solo recuerdos en cada esquina. Encontró el diario de su abuela escondido bajo las tablas del viejo ropero. Las páginas revelaban secretos que cambiarían su visión del mundo para siempre. Decidió entonces emprender un viaje hacia la montaña sagrada, donde los ancianos decían que habitaban los guardianes del tiempo. Con cada paso, María descubría que su destino estaba más allá de lo que jamás imaginó posible.
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-section">
+                <h2>Actividad de Identificación</h2>
+                
+                <div class="question-card" id="question1">
+                    <h3>1. ¿Cuál es el argumento principal del texto?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="argumento" value="a">
+                            <span>La descripción de un pueblo abandonado</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="argumento" value="b">
+                            <span>La búsqueda de María por encontrar a su familia y descubrir su destino</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="argumento" value="c">
+                            <span>El impacto de la lluvia en el pueblo</span>
+                        </label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer('argumento', 'b')">Verificar</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+
+                <div class="question-card" id="question2">
+                    <h3>2. Selecciona los temas presentes en el texto:</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="checkbox" name="temas" value="a">
+                            <span>Pérdida y duelo</span>
+                        </label>
+                        <label class="option">
+                            <input type="checkbox" name="temas" value="b">
+                            <span>Búsqueda de identidad</span>
+                        </label>
+                        <label class="option">
+                            <input type="checkbox" name="temas" value="c">
+                            <span>Viaje iniciático</span>
+                        </label>
+                        <label class="option">
+                            <input type="checkbox" name="temas" value="d">
+                            <span>Romance adolescente</span>
+                        </label>
+                    </div>
+                    <button class="check-btn" onclick="checkTemas()">Verificar</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+
+                <div class="question-card" id="question3">
+                    <h3>3. ¿Cuál es el género literario predominante?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="genero" value="a">
+                            <span>Narrativo</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="genero" value="b">
+                            <span>Poético</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="genero" value="c">
+                            <span>Dramático</span>
+                        </label>
+                    </div>
+                    <button class="check-btn" onclick="checkAnswer('genero', 'a')">Verificar</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+
+                <div class="results" id="results">
+                    <h3>¡Actividad Completada!</h3>
+                    <p id="score-text"></p>
+                    <button class="reset-btn" onclick="resetActivity()">Reiniciar Actividad</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Actividad interactiva para el análisis literario - Prepa en Línea SEP</p>
+        </footer>
+    </div>
+
+    <script>
+        function checkAnswer(name, correctValue) {
+            const options = document.getElementsByName(name);
+            let selected = null;
+            for (let opt of options) {
+                if (opt.checked) {
+                    selected = opt.value;
+                    break;
+                }
+            }
+            const feedback = document.getElementById('feedback' + (name === 'argumento' ? '1' : '3'));
+            if (selected === correctValue) {
+                feedback.textContent = "¡Correcto!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "Incorrecto. Intenta de nuevo.";
+                feedback.style.color = "red";
+            }
+        }
+
+        function checkTemas() {
+            const checkboxes = document.getElementsByName('temas');
+            const selected = [];
+            for (let cb of checkboxes) {
+                if (cb.checked) selected.push(cb.value);
+            }
+            const correct = ['a', 'b', 'c'];
+            const feedback = document.getElementById('feedback2');
+            if (correct.every(val => selected.includes(val)) && selected.length === correct.length) {
+                feedback.textContent = "¡Correcto!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "Incorrecto. Intenta de nuevo.";
+                feedback.style.color = "red";
+            }
+        }
+
+        function resetActivity() {
+            document.querySelectorAll('input').forEach(el => el.checked = false);
+            document.querySelectorAll('.feedback').forEach(el => el.textContent = '');
+            document.getElementById('results').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
